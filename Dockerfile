@@ -12,7 +12,9 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-RUN pip install -U pip --no-cache-dir --upgrade -r /code/requirements.txt
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Copy the source code into the container.
 COPY . .
