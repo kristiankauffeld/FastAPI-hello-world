@@ -18,7 +18,8 @@ COPY . .
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Expose the port that the application listens on.
-EXPOSE 80
+EXPOSE $PORT
+
 
 # Run the application.
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", $PORT]
