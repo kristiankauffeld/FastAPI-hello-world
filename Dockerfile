@@ -12,15 +12,13 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-COPY requirements.txt .
-
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
-
 # Copy the source code into the container.
 COPY . .
 
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
 # Expose the port that the application listens on.
-EXPOSE 8000
+EXPOSE 80
 
 # Run the application.
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
